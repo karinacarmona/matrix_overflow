@@ -53,4 +53,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resources :categories, only: [:index, :show]
+
+  resources :posts do
+    resources :comments
+  end
+
+  resources :votes, only: [:new, :create]
+
 end

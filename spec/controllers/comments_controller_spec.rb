@@ -45,4 +45,10 @@ let(:test_post) {FactoryGirl.create :post}
       }.to change { test_comment.reload.content }.to('my new content')
     end
   end
+
+  describe "#destroy" do
+    expect{
+      delete :destroy, post_id: test_post.id, id: test_comment.id
+    }.to change {Comment.count}.by(1)
+  end
 end

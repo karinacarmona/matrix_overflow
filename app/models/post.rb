@@ -7,6 +7,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   #Polymorphic Association
-  belongs_to :post, class_name: 'Post', foreign_key: :parent_id
-  has_many :post, class_name: 'Post', foreign_key: :parent_id
+  belongs_to :parent, class_name: 'Post', foreign_key: :parent_id
+  has_many :children, class_name: 'Post', foreign_key: :parent_id
 end

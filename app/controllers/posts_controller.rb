@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Category.find(params[:category_id]).posts.new
+    @category = Category.find(params[:category_id])
+    @post = @category.posts.new
   end
 
   def create

@@ -37,7 +37,7 @@ let(:test_post) {FactoryGirl.create :post}
   end
 
   describe "#update" do
-    it "updates the todo if valid params" do
+    it "updates the comment if valid params" do
       expect {
         put :update, post_id: test_post.id, id: test_comment.id, comment: {
           content: 'my new content',
@@ -47,8 +47,10 @@ let(:test_post) {FactoryGirl.create :post}
   end
 
   describe "#destroy" do
-    expect{
-      delete :destroy, post_id: test_post.id, id: test_comment.id
-    }.to change {Comment.count}.by(1)
+    it "deletes the comment" do
+      expect {
+        delete :destroy, post_id: test_post.id, id: test_comment.id
+      }.to change {Comment.count}.by(1)
+    end
   end
 end

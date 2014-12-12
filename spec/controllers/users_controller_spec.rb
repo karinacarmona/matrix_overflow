@@ -5,7 +5,7 @@ RSpec.describe UsersController, :type => :controller do
     describe "user#new" do
       xit "loads a signup page for a user" do
         get :new
-        expect(response).to be success
+        expect(response).to be_success
       end
     end
   end

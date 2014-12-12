@@ -19,16 +19,15 @@ let(:test_post) {FactoryGirl.create :post}
     end
   end
 
-  # describe "#create" do
-  #   it "creates the todo if valid params" do
-  #     expect {
-  #       post :create, todo: {
-  #         title: 'my title',
-  #         body: 'my body',
-  #         list_name: 'Sweet List'
-  #       }
-  #     }.to change { Todo.count }.by(1)
-  #   end
+  describe "#create" do
+    it "creates the comment if valid params" do
+      expect {
+        post :create,
+        :post_id => test_post.id,
+        :comment => { content: 'my content'}
+      }.to change { Comment.count }.by(1)
+    end
+  end
 
   #   it "changes the todo_count" do
   #     expect {

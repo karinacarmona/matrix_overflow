@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe "categories#index", :type => :view do
+RSpec.describe "categories/index.html.erb", :type => :view do
   context "on the index page" do
     describe "the page" do
       it "should display a list of all categories" do
@@ -9,9 +9,8 @@ RSpec.describe "categories#index", :type => :view do
         ])
 
         render
-
-        rendered.should contain("slicer")
-        rendered.should contain("dicer")
+        expect(rendered).to include("slicer")
+        expect(rendered).to include("dicer")
       end
     end
   end

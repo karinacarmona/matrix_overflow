@@ -19,7 +19,7 @@ describe PostsController do
   end
 
   describe "#create" do
-    it "creates the comment if valid params" do
+    it "creates the post if valid params" do
       expect {
         post :create,
         :category_id => test_category.id,
@@ -28,12 +28,12 @@ describe PostsController do
     end
   end
 
-  # describe "#edit" do
-  #   it "assigns the comment to the comment" do
-  #     get :edit, post_id: test_post.id, id: test_comment.id
-  #     expect(assigns(:comment)).to eq(test_comment)
-  #   end
-  # end
+  describe "#edit" do
+    it "assigns the post to the post" do
+      get :edit, category_id: test_category.id, id: test_post.id
+      expect(assigns(:post)).to eq(test_post)
+    end
+  end
 
   # describe "#update" do
   #   it "updates the comment if valid params" do

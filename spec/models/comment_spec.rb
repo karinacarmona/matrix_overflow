@@ -14,5 +14,13 @@ describe Comment do
   context "associations" do
     it { should belong_to :user }
     it { should belong_to :post }
+    it 'belongs to a post' do
+      comment = FactoryGirl.build :comment
+      post = FactoryGirl.build :post
+      post.comments << comment
+      post.save
+      expect(post.comments.last).to eq(comment)
+    end
+
   end
 end

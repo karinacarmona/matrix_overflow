@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Category.find(params[:category_id]).posts
+    @posts = Category.find(params[:category_id]).posts.where(parent_id: nil)
   end
 
   def show
-    @post = Category.find(params[:category_id]).posts.find(params[:id])
+    @category = Category.find(params[:category_id])
+    @post = @category.posts.find(params[:id])
   end
 
   def new

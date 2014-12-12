@@ -19,7 +19,11 @@ class PostsController < ApplicationController
     category = Category.find(params[:category_id])
     @post = category.posts.new(post_params)
     if @post.save
-      redirect_to category_post_path id: @post.id
+      if @post.parent_id
+        redirect_to category_post_path id: @post.parent_id
+      else
+        redirect_to category_post_path id: @post.id
+      end
     else
       render :new
     end

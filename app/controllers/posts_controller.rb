@@ -36,7 +36,11 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
-      redirect_to category_post_path
+      if @post.parent_id
+        redirect_to category_post_path id: @post.parent_id
+      else
+        redirect_to category_post_path id: @post.id
+      end
     else
       render :edit
     end

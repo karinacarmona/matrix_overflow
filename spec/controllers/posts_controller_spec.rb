@@ -12,21 +12,21 @@ describe PostsController do
   end
 
   describe "#new" do
-    it "assigns the comment to Comment.new" do
+    it "assigns the post to Post.new" do
       get :new, :category_id => test_category.id
       expect(assigns(:post)).to be_a_new(Post)
     end
   end
 
-  # describe "#create" do
-  #   it "creates the comment if valid params" do
-  #     expect {
-  #       post :create,
-  #       :post_id => test_post.id,
-  #       :comment => { content: 'my content'}
-  #     }.to change { Comment.count }.by(1)
-  #   end
-  # end
+  describe "#create" do
+    it "creates the comment if valid params" do
+      expect {
+        post :create,
+        :category_id => test_category.id,
+        :post => { title: 'my title', content: 'my content'}
+      }.to change { Post.count }.by(1)
+    end
+  end
 
   # describe "#edit" do
   #   it "assigns the comment to the comment" do

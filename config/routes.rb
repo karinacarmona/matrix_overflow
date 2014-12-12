@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  root to: 'comments#index'
+
   resources :categories, only: [:index, :show]
 
   resources :posts do

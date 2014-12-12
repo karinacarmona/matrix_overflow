@@ -48,9 +48,10 @@ let(:test_post) {FactoryGirl.create :post}
 
   describe "#destroy" do
     it "deletes the comment" do
+      test_comment
       expect {
         delete :destroy, post_id: test_post.id, id: test_comment.id
-      }.to change {Comment.count}.by(1)
+      }.to change {Comment.count}.by(-1)
     end
   end
 end

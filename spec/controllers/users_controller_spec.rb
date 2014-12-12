@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, :type => :controller do
   context "when a user goes to signup" do
     describe "user#new" do
-      xit "loads a signup page for a user" do
+      it "loads a signup page for a user" do
         get :new
         expect(response).to be_success
       end

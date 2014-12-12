@@ -15,12 +15,19 @@ describe Comment do
     it { should belong_to :user }
     it { should belong_to :post }
     it { should have_many :votes }
+
     it 'belongs to a post' do
       comment = FactoryGirl.build :comment
       post = FactoryGirl.build :post
       post.comments << comment
       post.save
       expect(post.comments.last).to eq(comment)
+    end
+
+    it 'has many votes' do
+      comment = FactoryGirl.build :comment
+      comment.save
+      expect { comment.votes.create }.to change {Vote.count}.by(1)
     end
 
   end

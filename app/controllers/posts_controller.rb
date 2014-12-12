@@ -4,20 +4,30 @@ class PostsController < ApplicationController
     @posts = Category.find(params[:category_id]).posts
   end
 
+  def show
+    @post = Category.find(params[:category_id]).post.find(params[:id])
+  end
+
   def new
     @post = Category.find(params[:category_id]).posts.new
   end
 
   def create
     category = Category.find(params[:category_id])
-    @post = category.posts.new(params[:post])
+    @post = category.posts.new(post_params)
 
     if @post.save
-      redirect_to root_path
+      redirect_to category_post_path id: @post.id
     else
       render :new
     end
 
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 
 end

@@ -9,13 +9,16 @@ class CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    p params
     @comment = post.comments.new(comment_params)
     if @comment.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
   end
 
   private

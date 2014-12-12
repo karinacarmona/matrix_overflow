@@ -46,12 +46,12 @@ describe PostsController do
     end
   end
 
-  # describe "#destroy" do
-  #   it "deletes the comment" do
-  #     test_comment
-  #     expect {
-  #       delete :destroy, post_id: test_post.id, id: test_comment.id
-  #     }.to change {Comment.count}.by(-1)
-  #   end
-  # end
+  describe "#destroy" do
+    it "deletes the post" do
+      test_post
+      expect {
+        delete :destroy, category_id: test_category.id, id: test_post.id
+      }.to change {Post.count}.by(-1)
+    end
+  end
 end

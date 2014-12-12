@@ -10,7 +10,6 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-  #this seems like a views test
   context "while filling out the fields" do
     describe "user#create" do
       it "doesn't allow a user to be created if the fields aren't filled out" do
@@ -21,12 +20,30 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-  #so does this one...
   context "if proper fields aren't filled out" do
     describe "user#create" do
       it "reloads the page if fields are not filled correctly" do
         post :create, { user: {username: "lulu", password: "ghoul"} }
-        expect(response).to render_template("index")
+        expect(response).to render_template("new")
+      end
+    end
+  end
+
+  context "while filling out the fields" do
+    describe "user#create" do
+      it "allows a user to be created if the fields are filled out" do
+        expect{
+          User.create(username: "lulu", email: "ghoul@2spooky.com", password: "ghoul")
+        }.to change(User, :count)
+      end
+    end
+  end
+
+  context "if proper fields aren't filled out" do
+    describe "user#create" do
+      it "redirects back to the index" do
+        post :create, { user: {username: "lulu", email: "ghoul@2spooky.com", password: "ghoul"} }
+        expect(response).to redirect_to root_path
       end
     end
   end

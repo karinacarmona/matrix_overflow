@@ -35,15 +35,16 @@ describe PostsController do
     end
   end
 
-  # describe "#update" do
-  #   it "updates the comment if valid params" do
-  #     expect {
-  #       put :update, post_id: test_post.id, id: test_comment.id, comment: {
-  #         content: 'my new content',
-  #       }
-  #     }.to change { test_comment.reload.content }.to('my new content')
-  #   end
-  # end
+  describe "#update" do
+    it "updates the post if valid params" do
+      expect {
+        put :update, category_id: test_category.id, id: test_post.id, post: {
+          title: 'my new title',
+          content: 'my new content'
+        }
+      }.to change { test_post.reload.content }.to('my new content')
+    end
+  end
 
   # describe "#destroy" do
   #   it "deletes the comment" do

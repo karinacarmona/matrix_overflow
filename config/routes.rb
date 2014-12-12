@@ -54,10 +54,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :categories, only: [:index, :show]
 
-  resources :posts do
-    resources :comments
+  resources :categories, only: [:index, :show] do
+    resources :posts
   end
 
   resources :votes, only: [:new, :create]

@@ -12,12 +12,12 @@ let(:test_post) {FactoryGirl.create :post}
     end
   end
 
-  # describe "#new" do
-  #   it "assigns the todo to Todo.new" do
-  #     get :new
-  #     expect(assigns(:todo)).to be_a_new(Todo)
-  #   end
-  # end
+  describe "#new" do
+    it "assigns the comment to Comment.new" do
+      get :new, :post_id => test_post.id
+      expect(assigns(:comment)).to be_a_new(Comment)
+    end
+  end
 
   # describe "#create" do
   #   it "creates the todo if valid params" do

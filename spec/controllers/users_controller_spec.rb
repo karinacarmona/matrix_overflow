@@ -13,7 +13,7 @@ RSpec.describe UsersController, :type => :controller do
   #this seems like a views test
   context "while filling out the fields" do
     describe "user#create" do
-      xit "doesn't allow a user to be created if the fields aren't filled out" do
+      it "doesn't allow a user to be created if the fields aren't filled out" do
         expect{
           User.create(username: "lulu", password: "ghoul")
         }.to_not change(User, :count)
@@ -24,8 +24,9 @@ RSpec.describe UsersController, :type => :controller do
   #so does this one...
   context "if proper fields aren't filled out" do
     describe "user#create" do
-      xit "reloads the page if fields are not filled correctly" do
-        expect(true).to eq(true)
+      it "reloads the page if fields are not filled correctly" do
+        post :create, { user: {username: "lulu", password: "ghoul"} }
+        expect(response).to render_template("index")
       end
     end
   end

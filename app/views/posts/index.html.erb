@@ -1,0 +1,5 @@
+<%= link_to 'New Post', new_category_post_path %>
+
+<% @posts.each do |post| %>
+  <%= simple_format link_to post.title, category_post_path(id: post.id)%>
+<% end %>

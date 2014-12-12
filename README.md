@@ -2,6 +2,8 @@
 
 ## MATRIX OVERFLOW
 
+A redesign of StackOverflow with a focus on categorization, design, and organization.
+
 Take the red pill and descend.
 
 Creators: Karina, Liam, & Maggie

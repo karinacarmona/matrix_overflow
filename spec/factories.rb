@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category do
-    content { Faker::Lorem.sentence }
+    name { Faker::Lorem.word }
   end
 
   factory :post do

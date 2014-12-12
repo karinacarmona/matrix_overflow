@@ -36,35 +36,13 @@ let(:test_post) {FactoryGirl.create :post}
     end
   end
 
-  # describe "#update" do
-  #   it "updates the todo if valid params" do
-  #     expect {
-  #       put :update, id: todo.id, todo: {
-  #         title: 'my title',
-  #         body: todo.body,
-  #         list_name: todo.list_name
-  #       }
-  #     }.to change { todo.reload.title }.to('my title')
-  #   end
-
-  #   it "downcases and dashes the list_name" do
-  #     expect {
-  #       put :update, id: todo.id, todo: {
-  #         title: 'my title',
-  #         body: 'my body',
-  #         list_name: 'Sweet List'
-  #       }
-  #     }.to change { todo.reload.list_name }.to('sweet-list')
-  #   end
-
-  #   it "doesn't change the todo_count" do
-  #     expect {
-  #       put :update, id: todo.id, todo: {
-  #         title: 'my title',
-  #         body: todo.body,
-  #         list_name: todo.list_name
-  #       }
-  #     }.to_not change { todo.reload.todo_count }
-  #   end
-  # end
+  describe "#update" do
+    it "updates the todo if valid params" do
+      expect {
+        put :update, post_id: test_post.id, id: test_comment.id, comment: {
+          content: 'my new content',
+        }
+      }.to change { test_comment.reload.content }.to('my new content')
+    end
+  end
 end

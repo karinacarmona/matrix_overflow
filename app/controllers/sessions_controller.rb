@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    #should this be doing something?
+    #just so that you can get to login
   end
 
   def create

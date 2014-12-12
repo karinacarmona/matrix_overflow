@@ -8,16 +8,20 @@
   <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans' rel='stylesheet' type='text/css'>s
 </head>
 <body>
-  <div class="header">
-<% if current_user %>
-<%= link_to 'Logout', logout_path, method: 'DELETE'  %>
-<% else %>
-<a href="/users/new">Signup</a> | <a href="/login">Login</a>
-<% end %>
-<span><%= link_to 'Home', root_path%></span>
+
+<div class="header">
+  <% if current_user %>
+      <%= link_to 'Logout', logout_path, method: 'DELETE'  %>
+  <% else %>
+      <a href="/users/new">Signup</a> | <a href="/login">Login</a>
+  <% end %>
+
+  <span><%= link_to 'Home', root_path%></span> #justify to the right
+
 </div>
 <div class="container">
 <%= yield %>
 </div>
+
 </body>
 </html>

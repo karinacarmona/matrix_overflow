@@ -15,7 +15,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    p params
     category = Category.find(params[:category_id])
     @post = category.posts.new(post_params)
     if @post.save

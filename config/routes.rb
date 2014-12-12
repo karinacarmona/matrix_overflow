@@ -54,7 +54,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-
   resources :categories, only: [:index, :show] do
     resources :posts
   end
